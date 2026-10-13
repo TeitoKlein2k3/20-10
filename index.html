@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hội chị em tỏa sáng — 20/10</title>
+    <style>
+        :root {
+            --pink: #ef5d91;
+            --deep: #76284f;
+            --cream: #fff8f4;
+            --gold: #ffc96d;
+            --ink: #54233d
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--cream);
+            color: var(--ink);
+            font-family: "Segoe UI", system-ui, sans-serif
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: 70px 18px 58px;
+            background: radial-gradient(circle at top, #fff 0, #ffe0eb 48%, #f6a6c3 100%)
+        }
+
+        .hero:before {
+            content: "🌸 ✨ 🌷 💖 🌼";
+            display: block;
+            font-size: clamp(24px, 4vw, 42px);
+            letter-spacing: .35em;
+            margin-bottom: 15px;
+            animation: bob 4s ease-in-out infinite
+        }
+
+        @keyframes bob {
+            50% {
+                transform: translateY(-8px)
+            }
+        }
+
+        .eyebrow {
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .22em;
+            font-weight: 800;
+            color: #9d3767
+        }
+
+        h1 {
+            font: 500 clamp(2.8rem, 8vw, 5.8rem)/1 Georgia, serif;
+            color: var(--deep);
+            margin: 14px 0
+        }
+
+        h1 em {
+            color: var(--pink)
+        }
+
+        .hero p {
+            max-width: 680px;
+            line-height: 1.8;
+            margin: 20px auto
+        }
+
+        .tag {
+            display: inline-block;
+            background: #ffffffb8;
+            border: 1px solid #fff;
+            padding: 10px 18px;
+            border-radius: 99px;
+            font-weight: 750
+        }
+
+        main {
+            width: min(1080px, 100% - 32px);
+            margin: 0 auto;
+            padding: 48px 0 70px
+        }
+
+        .sectionhead {
+            text-align: center;
+            margin-bottom: 25px
+        }
+
+        .sectionhead small {
+            font-weight: 800;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--pink)
+        }
+
+        h2 {
+            font: 500 clamp(2rem, 4vw, 3rem) Georgia, serif;
+            color: var(--deep);
+            margin: 10px 0
+        }
+
+        .sectionhead p {
+            line-height: 1.7;
+            color: #80566a
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 12px;
+            margin: 24px 0 22px
+        }
+
+        .searchbox {
+            position: relative
+        }
+
+        .searchbox span {
+            position: absolute;
+            left: 15px;
+            top: 12px
+        }
+
+        .searchbox input {
+            padding-left: 44px
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            border: 1px solid #edc6d7;
+            border-radius: 13px;
+            background: white;
+            padding: 12px 14px;
+            color: var(--ink);
+            outline: none
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--pink);
+            box-shadow: 0 0 0 3px #ef5d911b
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 13px;
+            padding: 12px 18px;
+            font-weight: 800;
+            background: var(--deep);
+            color: white;
+            transition: .2s
+        }
+
+        .btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .btn.light {
+            background: #ffe2ec;
+            color: var(--deep)
+        }
+
+        .btn.gold {
+            background: var(--gold);
+            color: #55243c
+        }
+
+        .people {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 15px
+        }
+
+        .person {
+            border: 1px solid #f1d4df;
+            background: linear-gradient(145deg, #fff, #fff5f8);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 24px #76284f0a;
+            transition: .2s
+        }
+
+        .person:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 28px #76284f15
+        }
+
+        .avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 17px;
+            display: grid;
+            place-items: center;
+            font-size: 27px;
+            background: #ffe1eb;
+            margin-bottom: 12px
+        }
+
+        .person h3 {
+            margin: 0 0 5px;
+            color: var(--deep);
+            font-size: 1.1rem
+        }
+
+        .person p {
+            margin: 0 0 15px;
+            color: #8b6175;
+            font-size: .9rem
+        }
+
+        .person .btn {
+            width: 100%
+        }
+
+        .empty {
+            text-align: center;
+            padding: 30px;
+            border: 1px dashed #e9b9cc;
+            border-radius: 18px;
+            grid-column: 1/-1
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: #351426a8;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            z-index: 20;
+            overflow: auto
+        }
+
+        .overlay.show {
+            display: flex
+        }
+
+        .modal {
+            width: min(680px, 100%);
+            max-height: 94vh;
+            overflow: auto;
+            background: #fff9fc;
+            border-radius: 25px;
+            box-shadow: 0 30px 100px #270b1e55;
+            position: relative
+        }
+
+        .modalhead {
+            padding: 24px 25px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .close {
+            border: 0;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            background: #ffe2ec;
+            color: var(--deep);
+            font-size: 1.3rem
+        }
+
+        .cardwish {
+            margin: 15px 24px 24px;
+            padding: 32px 27px;
+            border-radius: 20px;
+            background: radial-gradient(circle at top right, #fff 0, #ffe6ef 50%, #fff2d6 100%);
+            border: 1px solid #fff;
+            position: relative;
+            overflow: hidden
+        }
+
+        .cardwish:after {
+            content: "🌷";
+            position: absolute;
+            right: 8px;
+            bottom: -17px;
+            font-size: 92px;
+            opacity: .22;
+            transform: rotate(-18deg)
+        }
+
+        .cardwish .to {
+            font-size: .8rem;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            font-weight: 850;
+            color: #a83b6d
+        }
+
+        .cardwish h2 {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            line-height: 1.1;
+            margin: 15px 0
+        }
+
+        .cardwish .message {
+            font: 1.12rem/1.85 Georgia, serif;
+            white-space: pre-wrap;
+            position: relative;
+            z-index: 1
+        }
+
+        .cardwish .sign {
+            margin-top: 22px;
+            font-weight: 800;
+            position: relative;
+            z-index: 1
+        }
+
+        .modalactions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            padding: 0 24px 24px
+        }
+
+        .editbox {
+            margin: 0 24px 24px;
+            padding: 18px;
+            border: 1px solid #f0d4df;
+            border-radius: 16px;
+            background: white
+        }
+
+        .editbox h3 {
+            margin: 0 0 12px
+        }
+
+        .editbox label {
+            display: block;
+            font-size: .88rem;
+            font-weight: 750;
+            margin: 10px 0 6px
+        }
+
+        .editbox textarea {
+            min-height: 125px;
+            resize: vertical
+        }
+
+        .admin {
+            margin-top: 42px;
+            background: #fff;
+            border: 1px solid #f0d4df;
+            border-radius: 20px;
+            padding: 22px
+        }
+
+        .admin summary {
+            cursor: pointer;
+            font-weight: 850;
+            color: var(--deep)
+        }
+
+        .admin p {
+            line-height: 1.7;
+            color: #80566a
+        }
+
+        .admin textarea {
+            min-height: 130px;
+            font-family: ui-monospace, monospace;
+            font-size: .88rem
+        }
+
+        .adminrow {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px
+        }
+
+        .hint {
+            font-size: .85rem;
+            color: #8b6175
+        }
+
+        footer {
+            text-align: center;
+            background: #54203b;
+            color: #ffe4ed;
+            padding: 25px 16px;
+            font-size: .9rem
+        }
+
+        #toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4d1e37;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 99px;
+            z-index: 40;
+            display: none;
+            box-shadow: 0 10px 30px #0002
+        }
+
+        @media(max-width:760px) {
+            .people {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+
+            .controls {
+                grid-template-columns: 1fr
+            }
+
+            .hero {
+                padding-top: 55px
+            }
+
+            .cardwish {
+                margin: 12px;
+                padding: 25px 20px
+            }
+        }
+
+        @media(max-width:460px) {
+            .people {
+                grid-template-columns: 1fr
+            }
+
+            .person {
+                display: grid;
+                grid-template-columns: 52px 1fr;
+                column-gap: 13px;
+                align-items: center
+            }
+
+            .person .avatar {
+                grid-row: span 2;
+                margin: 0
+            }
+
+            .person p {
+                margin: 0
+            }
+
+            .person .btn {
+                grid-column: 1/-1;
+                margin-top: 12px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="hero">
+        <div class="eyebrow">Sự kiện nội bộ · 20 tháng 10</div>
+        <h1>Hội chị em<br><em>tỏa sáng!</em></h1>
+        <p>Hôm nay là ngày các chị em được quyền xinh đẹp vô điều kiện, cười thả ga và nhận lời khen không giới hạn.
+            Chọn tên của mình để mở thiệp bí mật nhé! 💐</p><span class="tag">💗 Chúc mừng Ngày Phụ nữ Việt Nam 20/10
+            💗</span>
+    </header>
+    <main>
+        <div class="sectionhead"><small>Thiệp riêng của bạn</small>
+            <h2>Tìm tên — mở lời chúc 🎁</h2>
+            <p>Mỗi tấm thiệp là một lời chúc vui vẻ riêng. Gõ tên vào ô tìm kiếm, rồi bấm “Mở thiệp”.</p>
+        </div>
+        <div class="controls">
+            <div class="searchbox"><span>🔎</span><input id="search" placeholder="Nhập tên đồng nghiệp..."
+                    aria-label="Tìm theo tên"></div><button class="btn light" id="showAll">Hiện tất cả</button>
+        </div>
+        <div class="people" id="people"></div>
+        <details class="admin">
+            <summary>⚙️ Quản lý danh sách & lời chúc (dành cho người tổ chức)</summary>
+            <p>Danh sách mẫu bên dưới để bạn thử website. Hãy thay bằng tên thật của chị em và lời chúc riêng. Mỗi dòng
+                là một người với 2 trường <b>name</b> và <b>message</b>. Có thể thêm hoặc xóa dòng tùy ý.</p><textarea
+                id="jsonInput" spellcheck="false" aria-label="Danh sách tên và lời chúc"></textarea>
+            <div class="adminrow"><button class="btn" id="applyList">Cập nhật danh sách</button><button
+                    class="btn light" id="downloadData">Tải danh sách JSON</button><label class="btn light"
+                    for="uploadData">Nhập file JSON</label><input id="uploadData" type="file"
+                    accept=".json,application/json" hidden></div>
+            <p class="hint">Mẹo: website không gửi dữ liệu lên máy chủ. Danh sách được dùng ngay trong trình duyệt hiện
+                tại; hãy tải file JSON để lưu bản riêng hoặc chuyển sang máy khác.</p>
+        </details>
+    </main>
+    <footer>🌸 Gửi thật nhiều yêu thương đến những đồng nghiệp nữ tuyệt vời 🌸</footer>
+    <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Thiệp chúc mừng">
+        <div class="modal">
+            <div class="modalhead"><strong>💌 Một lời nhắn dành riêng cho bạn</strong><button class="close" id="close"
+                    aria-label="Đóng">×</button></div>
+            <div class="cardwish" id="wishCard">
+                <div class="to" id="wishTo"></div>
+                <h2>Chúc mừng 20/10! 🎉</h2>
+                <div class="message" id="wishMessage"></div>
+                <div class="sign" id="wishSign">Thân mến, hội đồng nghiệp 💗</div>
+            </div>
+            <div class="modalactions"><button class="btn" id="copyWish">📋 Sao chép lời chúc</button><button
+                    class="btn light" id="editWish">✍️ Chỉnh lời chúc</button><button class="btn gold" id="shareWish">↗
+                    Chia sẻ thiệp</button></div>
+            <div class="editbox" id="editBox" hidden>
+                <h3>Chỉnh thiệp này</h3><label for="editName">Tên người nhận</label><input id="editName"><label
+                    for="editMessage">Lời chúc riêng</label><textarea id="editMessage"></textarea>
+                <div class="adminrow"><button class="btn" id="saveWish">Lưu lời chúc</button><button class="btn light"
+                        id="cancelEdit">Hủy</button></div>
+            </div>
+        </div>
+    </div>
+    <div id="toast" role="status"></div>
+    <script>
+        const starter = [
+            { name: "Chị Yên", message: "Chúc chị Yên 20/10 vui như trúng thưởng, xinh như ảnh đã chỉnh màu và công việc nhẹ nhàng như ngày nghỉ! Chúc chị luôn rạng rỡ, khách yêu sếp quý, deadline thấy chị là tự động lùi lại 😄🌷" },
+            { name: "Chị Tâm", message: "Chúc chị Tâm luôn xinh tươi, thần thái ngút ngàn, việc khó hóa dễ, việc nhiều hóa ít. Mong hôm nay chị chỉ phải đưa ra một quyết định khó khăn: ăn bánh nào trước! 🎂🌷" },
+            { name: "Chị Hương Kua", message: "Chúc chị Hương Kua luôn tươi như hoa, trẻ như tuổi đôi mươi và vui như vừa nhận tin nhắn báo thưởng! Mong mọi điều tốt đẹp đều tìm đúng địa chỉ là chị nhé 💖✨" },
+            { name: "Chị Hương Néo", message: "Chúc chị Hương Néo ngày 20/10 nhận ngập lời khen, quà xịn và đồ ăn ngon. Đi làm thì gặp đồng đội dễ thương, về nhà thì gặp niềm vui, còn muộn phiền xin phép xếp hàng… rồi về luôn! 😂🌸" },
+            { name: "Chị Thủy", message: "Chúc chị Thủy luôn xinh đẹp bất chấp camera thường, rạng rỡ bất chấp deadline và hạnh phúc bất chấp cân nặng của hộp bánh hôm nay! Chúc chị lúc nào cũng gặp chuyện vui và người dễ thương 💐" },
+            { name: "Chị Phương lớn", message: "Chúc chị Phương ngày càng trẻ trung, duyên dáng, làm đâu thắng đó. Chúc chị nhận quà mỏi tay, nhận lời khen đỏ mặt và nhận lương mà không cần nhìn số dư hai lần! 🎁🌺" },
+            { name: "Chị Oanh", message: "Chúc chị Trang 20/10 lung linh như nữ chính, may mắn như nhân vật chính và được chiều chuộng như em bé. Chúc mọi kế hoạch đều thành công, mọi chiếc váy đều vừa và mọi món ngon đều không tăng cân! 😄" },
+            { name: "Chị Phương bé", message: "Chúc chị Phương bé tiền vào như nước, may mắn như được nghỉ đột xuất, nhan sắc ngày càng thăng hạng. Chúc chị 20/10 cười thật nhiều, vì nụ cười của chị là tài sản quý của cả phòng! 😆💗" },
+            { name: "Em Vân", message: "Chúc em Vân luôn vui vẻ, khỏe mạnh, xinh đẹp và có ví tiền luôn trong trạng thái “đầy pin”. Mong deadline ngoan ngoãn, cuộc họp ngắn gọn và cà phê lúc nào cũng đúng gu ☕💝" },
+        ];
+        let people = [...starter], activeIndex = -1;
+        const $ = id => document.getElementById(id);
+        const emojis = ["🌷", "🌸", "💖", "🌼", "🎀", "✨", "🦋", "🌺", "🍰", "💐"];
+        function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])) }
+        function render() {
+            const q = $("search").value.trim().toLocaleLowerCase("vi"); const list = $("people"); list.innerHTML = ""; let filtered = people.map((p, i) => ({ ...p, index: i })).filter(p => p.name.toLocaleLowerCase("vi").includes(q)); if (!filtered.length) { list.innerHTML = '<div class="empty">Không tìm thấy tên này. Thử từ khóa khác nhé 💗</div>'; return }
+            filtered.forEach(p => { const el = document.createElement("article"); el.className = "person"; el.innerHTML = `<div class="avatar">${emojis[p.index % emojis.length]}</div><h3>${escapeHtml(p.name)}</h3><p>Một lời chúc vui đang chờ bạn ✨</p><button class="btn" data-index="${p.index}">Mở thiệp 💌</button>`; el.querySelector("button").addEventListener("click", () => openWish(p.index)); list.appendChild(el) })
+        }
+        function updateJson() { $("jsonInput").value = JSON.stringify(people, null, 2) }
+        function toast(msg) { $("toast").textContent = msg; $("toast").style.display = "block"; setTimeout(() => $("toast").style.display = "none", 2500) }
+        function openWish(i) { activeIndex = i; const p = people[i]; $("wishTo").textContent = "Gửi " + p.name + " thân mến"; $("wishMessage").textContent = p.message; $("wishSign").textContent = "Thân mến, hội đồng nghiệp 💗"; $("overlay").classList.add("show"); $("editBox").hidden = true; confetti() }
+        function closeWish() { $("overlay").classList.remove("show") }
+        function confetti() { for (let i = 0; i < 22; i++) { const e = document.createElement("span"); e.textContent = emojis[Math.floor(Math.random() * emojis.length)]; e.style.cssText = `position:fixed;z-index:50;top:-30px;left:${Math.random() * 100}vw;font-size:${16 + Math.random() * 20}px;pointer-events:none;transition:transform ${3 + Math.random() * 3}s linear,opacity 4s;`; document.body.appendChild(e); requestAnimationFrame(() => { e.style.transform = `translateY(${innerHeight + 60}px) rotate(${Math.random() * 600}deg)`; e.style.opacity = "0" }); setTimeout(() => e.remove(), 6500) } }
+        async function copyText(text) { try { await navigator.clipboard.writeText(text); toast("Đã sao chép lời chúc 💗") } catch (e) { const ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); toast("Đã sao chép lời chúc 💗") } catch (_) { toast("Hãy chọn và sao chép nội dung thiệp thủ công nhé") } ta.remove() } }
+        $("search").addEventListener("input", render); $("showAll").addEventListener("click", () => { $("search").value = ""; render() }); $("close").addEventListener("click", closeWish); $("overlay").addEventListener("click", e => { if (e.target === $("overlay")) closeWish() }); document.addEventListener("keydown", e => { if (e.key === "Escape") closeWish() });
+        $("copyWish").addEventListener("click", () => { if (activeIndex >= 0) copyText(`Gửi ${people[activeIndex].name} thân mến,\n\nChúc mừng ngày 20/10! 🎉\n${people[activeIndex].message}\n\nThân mến, hội đồng nghiệp 💗`) });
+        $("editWish").addEventListener("click", () => { if (activeIndex < 0) return; $("editBox").hidden = false; $("editName").value = people[activeIndex].name; $("editMessage").value = people[activeIndex].message });
+        $("cancelEdit").addEventListener("click", () => { $("editBox").hidden = true });
+        $("saveWish").addEventListener("click", () => { if (activeIndex < 0) return; const name = $("editName").value.trim(), message = $("editMessage").value.trim(); if (!name || !message) { toast("Bạn nhập tên và lời chúc trước nhé"); return } people[activeIndex] = { name, message }; $("wishTo").textContent = "Gửi " + name + " thân mến"; $("wishMessage").textContent = message; render(); updateJson(); $("editBox").hidden = true; toast("Đã cập nhật thiệp!") });
+        $("shareWish").addEventListener("click", async () => { if (activeIndex < 0) return; const p = people[activeIndex]; const content = `Gửi ${p.name} thân mến!\nChúc mừng 20/10 🎉\n${p.message}`; if (navigator.share) { try { await navigator.share({ title: "Thiệp 20/10 dành riêng cho " + p.name, text: content }) } catch (e) { } } else copyText(content) });
+        $("applyList").addEventListener("click", () => { try { const v = JSON.parse($("jsonInput").value); if (!Array.isArray(v) || v.some(p => !p.name || !p.message)) throw Error(); people = v.map(p => ({ name: String(p.name).trim(), message: String(p.message).trim() })); render(); toast("Đã cập nhật " + people.length + " thiệp!") } catch (e) { toast("Danh sách chưa đúng JSON: mỗi người cần name và message") } });
+        $("downloadData").addEventListener("click", () => { const blob = new Blob([JSON.stringify(people, null, 2)], { type: "application/json" }); const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "danh-sach-thiep-20-10.json"; a.click(); URL.revokeObjectURL(a.href) });
+        $("uploadData").addEventListener("change", async e => { const f = e.target.files[0]; if (!f) return; try { const v = JSON.parse(await f.text()); if (!Array.isArray(v) || v.some(p => !p.name || !p.message)) throw Error(); people = v.map(p => ({ name: String(p.name), message: String(p.message) })); render(); updateJson(); toast("Đã nhập danh sách thành công") } catch (_) { toast("File không đúng định dạng danh sách JSON") } e.target.value = "" });
+        render(); updateJson();
+    </script>
+</body>
+
+</html>
