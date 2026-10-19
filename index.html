@@ -481,12 +481,13 @@
             <p>Mỗi tấm thiệp là một lời chúc vui vẻ riêng. Gõ tên vào ô tìm kiếm, rồi bấm “Mở thiệp”.</p>
         </div>
         <div class="controls">
-            <div class="searchbox"><span>🔎</span><input id="search" placeholder="Nhập tên đồng nghiệp..."
+            <div class="searchbox"><span>🔎</span><input id="search" placeholder="Nhập tên của chị/em vào đây nhé..."
                     aria-label="Tìm theo tên"></div><button class="btn light" id="showAll">Hiện tất cả</button>
         </div>
         <div class="people" id="people"></div>
+
     </main>
-    <footer>🌸 Gửi thật nhiều yêu thương đến tất cả chị em phụ nữ tuyệt vời 🌸</footer>
+    <footer>🌸 Gửi thật nhiều yêu thương đến những đồng nghiệp nữ tuyệt vời 🌸</footer>
     <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Thiệp chúc mừng">
         <div class="modal">
             <div class="modalhead"><strong>💌 Một lời nhắn dành riêng cho bạn</strong><button class="close" id="close"
@@ -531,7 +532,7 @@
         }
         function updateJson() { $("jsonInput").value = JSON.stringify(people, null, 2) }
         function toast(msg) { $("toast").textContent = msg; $("toast").style.display = "block"; setTimeout(() => $("toast").style.display = "none", 2500) }
-        function openWish(i) { activeIndex = i; const p = people[i]; $("wishTo").textContent = "Gửi " + p.name + " thân mến"; $("wishMessage").textContent = p.message; $("wishSign").textContent = "Thân mến, hội đồng nghiệp 💗"; $("overlay").classList.add("show"); $("editBox").hidden = true; confetti() }
+        function openWish(i) { activeIndex = i; const p = people[i]; $("wishTo").textContent = "Gửi " + p.name + " thân mến"; $("wishMessage").textContent = p.message; $("wishSign").textContent = "Thân mến, từ người chú, người anh/em và đứa em áp út của phòng 💗"; $("overlay").classList.add("show"); $("editBox").hidden = true; confetti() }
         function closeWish() { $("overlay").classList.remove("show") }
         function confetti() { for (let i = 0; i < 22; i++) { const e = document.createElement("span"); e.textContent = emojis[Math.floor(Math.random() * emojis.length)]; e.style.cssText = `position:fixed;z-index:50;top:-30px;left:${Math.random() * 100}vw;font-size:${16 + Math.random() * 20}px;pointer-events:none;transition:transform ${3 + Math.random() * 3}s linear,opacity 4s;`; document.body.appendChild(e); requestAnimationFrame(() => { e.style.transform = `translateY(${innerHeight + 60}px) rotate(${Math.random() * 600}deg)`; e.style.opacity = "0" }); setTimeout(() => e.remove(), 6500) } }
         async function copyText(text) { try { await navigator.clipboard.writeText(text); toast("Đã sao chép lời chúc 💗") } catch (e) { const ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); toast("Đã sao chép lời chúc 💗") } catch (_) { toast("Hãy chọn và sao chép nội dung thiệp thủ công nhé") } ta.remove() } }
